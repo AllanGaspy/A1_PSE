@@ -1,3 +1,4 @@
+from tkinter import *
 #caracteristicas: 
 #- Perda de memoria 
 #- Mudança de humor/personalidade 
@@ -11,54 +12,54 @@
 #comparativo de chances para avaliação
 def sint_chance(chance):
     if chance <= 3:
-        print("Baixa chance de Alzheimer, Monitoramento é recomendado.")
+        print("\nBaixa chance de Alzheimer, Monitoramento é recomendado.\n")
     elif 4 <= chance <= 5:
-        print("Moderada chance de Alzheimer, Consulta com especialista para melhor avaliação é recomendada.")
-    elif chance >= 6:
-        print("Alta chance de Alzheimer, Consulta com especialista para melhor avaliação/tratamento é altamente recomendada.")
+        print("\nModerada chance de Alzheimer, Consulta com especialista para melhor avaliação é recomendada.\n")
+    else: 
+        print("\nAlta chance de Alzheimer, Consulta com especialista para melhor avaliação/tratamento é altamente recomendada.\n")
     return chance
 
 #- Perda de memória 
 def sint_memloss(memloss, chance):
-    if memloss == "sim":
+    if memloss == "sim" or memloss == "s":
         chance += 1
     return chance
 
 #- Mudança de humor/personalidade 
 def sint_mood(mood, chance):
-    if mood == "sim":
+    if mood == "sim" or mood == "s":
         chance += 1
     return chance
 
 #- Dificuldade em tarefas básicas
 def sint_tasks(tasks, chance):
-    if tasks == "sim":
+    if tasks == "sim" or tasks == "s":
         chance += 1
     return chance
 
 #- AVC/Derrame
 def sint_AVC(AVC, chance): 
-    if AVC == "sim":
+    if AVC == "sim" or AVC == "s":
         #AVC/derrame aumentam em 80% o desenvolvimento de demências
         chance += 2
     return chance
 
 #- Doenças crônicas
 def sint_illness(illness, chance): 
-    if illness == "sim":
+    if illness == "sim" or illness == "s":
         chance += 1
     return chance
 
 #- Histórico familiar
 def sint_famhist(famhist, chance): 
-    if famhist == "sim":
+    if famhist == "sim" or famhist == "s":
         #histórico familiar de alzheimer aumenta as chances
         chance += 2
     return chance
 
 #- Saúde e rotina
 def sint_health(health, chance):
-    if health == "nao" or health == "não":
+    if health == "nao" or health == "não" or health == "n":
         chance += 1
     return chance
 
@@ -81,7 +82,7 @@ def main():
     illness = input("A pessoa possui algum tipo de doença crônica (diabetes, hipertensão, colesterol elevado)? (sim/não): ").lower()
     famhist = input("Há histórico de Alzheimer em parentes próximos da pessoa? (sim/não): ").lower()
     health = input("A pessoa mantém hábitos saudáveis? (sim/não): ").lower()
-    age = int(input("Informe a idade da pessoa: "))
+    age = int(input("Informe a idade da pessoa: \n"))
     
     # Atualiza chance com cada função de sintoma
     chance = sint_memloss(memloss, chance)
@@ -94,6 +95,6 @@ def main():
     chance = sint_age(age, chance)
     
     # Imprime os resultados de acordo com o Comparativo
-    print("Chance =", sint_chance(chance))
+    print("\nChance =", sint_chance(chance))
 
 main()
